@@ -1,0 +1,16 @@
+# Python environment
+.venv/
+
+# uv specific
+.pdm-python
+.python-version
+
+# Environment variables
+.env
+
+# Byte-compiled / optimized
+__pycache__/
+
+# Results and logs
+results/
+*.vcd

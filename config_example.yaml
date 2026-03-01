@@ -1,0 +1,61 @@
+output:
+  folder_name: "output"
+
+multithreading:
+  # Number of parallel workers to use. Set to 1 to disable multithreading.
+  num_workers: 32
+
+llm:
+  type: "openai"
+  base_url: "http://IP:PORT/v1"
+  api_key_env: ""
+  model: "nvidia/DeepSeek-R1-0528-FP4"
+  # base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+  # api_key_env: "GEMINI_API_KEY"
+  # model: "gemini-2.0-flash"
+  temperature: 0.6
+  timeout: 900
+  max_retries: 10
+  # max_tokens: 32768
+
+evaluator:
+  type: "verilogeval"     # "verilogeval", "stg", "rtllm"
+  timeout_seconds: 100
+  
+# search:
+#   type: "pass_at_n"       # "mcts", "ga", "pass_at_n"
+#   n: 300
+#   seed: 42
+
+search:
+  type: "mcts"
+  iterations: 100
+  branching_factor: 3
+  c_puct: 1.4
+  seed: 42
+
+# search:
+#   type: "igr"
+#   # Number of diverse design ideas to generate
+#   num_ideas: 60
+#   # Number of implementation refinement steps per idea
+#   implementation_refinement_steps: 4
+#   seed: 42
+#   # Whether to run idea chains in parallel
+#   parallel_ideas: true
+
+# search:
+#   type: "ga"
+#   iterations: 100
+#   num_node_selected: 2
+#   elite_selection_prob: 0.7
+#   branching_factor: 3
+#   num_island: 3
+#   population_per_island: 60
+#   seed: 42
+
+
+logging:
+  level: "INFO"
+  # Seconds between progress snapshots in evolution.log. Set to 0 to disable.
+  progress_interval_seconds: 3
